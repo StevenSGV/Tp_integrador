@@ -1,0 +1,286 @@
+{
+  "info": {
+    "_postman_id": "910b38f5-5c7c-4d06-ad5e-f7de01abcf2f",
+    "name": "tp_integrador",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52280936",
+    "_collection_link": "https://go.postman.co/collection/52280936-910b38f5-5c7c-4d06-ad5e-f7de01abcf2f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "localhost:8080/productos/crear",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Naranjas\",\r\n    \"marca\": \"Frutas y verduras\",\r\n    \"costo\": 1400.0,\r\n    \"cantidadDisponible\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/productos/crear",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "productos",
+            "crear"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/productos",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/productos",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "productos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/clientes/crear",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Steven\",\r\n    \"apellido\": \"Gómez\",\r\n    \"dni\": \"12345678\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/clientes/crear",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "crear"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/clientes",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/clientes",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/ventas/crear",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2023-04-01\",\r\n    \"estadoVenta\": \"Pendiente\",\r\n    \"detalleVenta\": [{\r\n        \"nombreProducto\": \"Naranjas\",\r\n        \"cantidadProducto\": 2,\r\n        \"precioUnitario\": 1400.0\r\n    }],\r\n    \"idCliente\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/ventas/crear",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "ventas",
+            "crear"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/ventas",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/ventas",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "ventas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/clientes/editar/1",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Steban\",\r\n    \"apellido\": \"Gomas\",\r\n    \"dni\": 1234\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/clientes/editar/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "clientes",
+            "editar",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/productos/editar/1",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Naranjas\",\r\n    \"marca\": \"Frutas y verduras\",\r\n    \"costo\": 100.0,\r\n    \"cantidadDisponible\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/productos/editar/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "productos",
+            "editar",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/ventas/editar/2",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"fecha\": \"2023-04-01\",\r\n    \"estadoVenta\": \"Pagado\",\r\n    \"idCliente\": 1,\r\n    \"detalleVenta\": [{\r\n        \"nombreProducto\": \"Naranjas\",\r\n        \"cantidadProducto\": 10,\r\n        \"precioUnitario\": 150.0\r\n    }]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "localhost:8080/ventas/editar/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "ventas",
+            "editar",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "localhost:8080/productos/eliminar/1",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "localhost:8080/productos/eliminar/1",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "productos",
+            "eliminar",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
