@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IVentaService {
 
-    public List<VentaDTO> getVentas();
+    List<VentaDTO> getVentas();
 
-    public VentaDTO saveVenta(VentaDTO ventaDTO);
+    VentaDTO saveVenta(VentaDTO ventaDTO);
 
-    public VentaDTO findVenta(Long codigoVenta);
+    VentaDTO findVenta(Long id);
 
-    public VentaDTO updateVenta(Long codigoVenta, VentaDTO ventaDTO);
+    VentaDTO updateVenta(Long id, VentaDTO ventaDTO);
 
-    public void deleteVenta(Long codigoVenta);
+    void deleteVenta(Long id);
 }

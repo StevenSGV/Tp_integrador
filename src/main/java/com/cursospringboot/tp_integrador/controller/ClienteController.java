@@ -2,40 +2,41 @@ package com.cursospringboot.tp_integrador.controller;
 
 import com.cursospringboot.tp_integrador.dto.ClienteDTO;
 import com.cursospringboot.tp_integrador.service.IClienteService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/clientes")
 public class ClienteController {
 
-    @Autowired
-    private IClienteService clienteService;
+    private final IClienteService clienteService;
 
-    @GetMapping("/clientes")
+    @GetMapping
     public List<ClienteDTO> getClientes() {
         return clienteService.getClientes();
     }
 
-    @GetMapping("/clientes/{idCliente}")
+    @GetMapping("/{idCliente}")
     public ClienteDTO getCliente(@PathVariable Long idCliente) {
         return clienteService.findCliente(idCliente);
     }
 
-    @PostMapping("/clientes/crear")
+    @PostMapping
     public ClienteDTO createCliente(@RequestBody ClienteDTO clienteDTO) {
         return clienteService.saveCliente(clienteDTO);
     }
 
-    @PutMapping("/clientes/editar/{idCliente}")
+    @PutMapping("/{idCliente}")
     public ClienteDTO editCliente(@PathVariable Long idCliente,
                                   @RequestBody ClienteDTO clienteDTO) {
 
         return clienteService.updateCliente(idCliente, clienteDTO);
     }
 
-    @DeleteMapping("/clientes/eliminar/{idCliente}")
+    @DeleteMapping("/{idCliente}")
     public void deleteCliente(@PathVariable Long idCliente) {
         clienteService.deleteCliente(idCliente);
     }

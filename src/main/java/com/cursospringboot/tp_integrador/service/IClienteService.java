@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IClienteService {
 
-    public List<ClienteDTO> getClientes();
+    List<ClienteDTO> getClientes();
 
-    public ClienteDTO saveCliente(ClienteDTO clienteDTO);
+    ClienteDTO saveCliente(ClienteDTO clienteDTO);
 
-    public ClienteDTO findCliente(Long idCliente);
+    ClienteDTO findCliente(Long id);
 
-    public ClienteDTO updateCliente(Long idCliente, ClienteDTO clienteDTO);
+    ClienteDTO updateCliente(Long id, ClienteDTO clienteDTO);
 
-    public void deleteCliente(Long idCliente);
+    void deleteCliente(Long id);
 }

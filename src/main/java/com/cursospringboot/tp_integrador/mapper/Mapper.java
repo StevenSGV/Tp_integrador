@@ -19,7 +19,7 @@ public class Mapper {
 
         ClienteDTO clienteDTO = new ClienteDTO();
 
-        clienteDTO.setIdCliente(cliente.getIdCliente());
+        clienteDTO.setId(cliente.getId());
         clienteDTO.setNombre(cliente.getNombre());
         clienteDTO.setApellido(cliente.getApellido());
         clienteDTO.setDni(cliente.getDni());
@@ -32,7 +32,7 @@ public class Mapper {
 
         ProductoDTO productoDTO = new ProductoDTO();
 
-        productoDTO.setCodigoProducto(producto.getCodigoProducto());
+        productoDTO.setId(producto.getId());
         productoDTO.setNombre(producto.getNombre());
         productoDTO.setMarca(producto.getMarca());
         productoDTO.setCosto(producto.getCosto());
@@ -46,10 +46,10 @@ public class Mapper {
 
         VentaDTO ventaDTO = new VentaDTO();
 
-        ventaDTO.setCodigoVenta(venta.getCodigoVenta());
+        ventaDTO.setId(venta.getId());
         ventaDTO.setFecha(venta.getFechaVenta());
         ventaDTO.setEstadoVenta(venta.getEstadoVenta());
-        ventaDTO.setIdCliente(venta.getCliente().getIdCliente());
+        ventaDTO.setIdCliente(venta.getCliente().getId());
 
         List<DetalleVentaDTO> listaDetallesVentaDTO = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class Mapper {
             if(venta.getDetalleVenta() != null) {
                 DetalleVentaDTO detalleVentaDTO = new DetalleVentaDTO();
 
-                detalleVentaDTO.setCodigoDetalle(detalle.getCodigoDetalle());
+                detalleVentaDTO.setId(detalle.getId());
                 detalleVentaDTO.setNombreProducto(detalle.getProducto().getNombre());
                 detalleVentaDTO.setCantidadProducto(detalle.getCantidad());
                 detalleVentaDTO.setPrecioUnitario(detalle.getPrecioUnitario());

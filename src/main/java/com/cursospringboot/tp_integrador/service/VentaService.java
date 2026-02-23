@@ -10,23 +10,21 @@ import com.cursospringboot.tp_integrador.model.Venta;
 import com.cursospringboot.tp_integrador.repository.IClienteRepository;
 import com.cursospringboot.tp_integrador.repository.IProductoRepository;
 import com.cursospringboot.tp_integrador.repository.IVentaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class VentaService implements IVentaService{
 
-    @Autowired
-    private IVentaRepository ventaRepository;
+    private final IVentaRepository ventaRepository;
 
-    @Autowired
-    private IClienteRepository clienteRepository;
+    private final IClienteRepository clienteRepository;
 
-    @Autowired
-    private IProductoRepository productoRepository;
+    private final IProductoRepository productoRepository;
 
     @Override
     public List<VentaDTO> getVentas() {
@@ -68,16 +66,16 @@ public class VentaService implements IVentaService{
     }
 
     @Override
-    public VentaDTO findVenta(Long codigoVenta) {
-        Venta venta = ventaRepository.findById(codigoVenta)
+    public VentaDTO findVenta(Long id) {
+        Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
 
         return Mapper.toVentaDTO(venta);
     }
 
     @Override
-    public VentaDTO updateVenta(Long codigoVenta, VentaDTO ventaDTO) {
-        Venta venta = ventaRepository.findById(codigoVenta)
+    public VentaDTO updateVenta(Long id, VentaDTO ventaDTO) {
+        Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
 
         if(ventaDTO.getFecha() != null) {
@@ -109,8 +107,8 @@ public class VentaService implements IVentaService{
     }
 
     @Override
-    public void deleteVenta(Long codigoVenta) {
-        Venta venta = ventaRepository.findById(codigoVenta)
+    public void deleteVenta(Long id) {
+        Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
 
         ventaRepository.delete(venta);

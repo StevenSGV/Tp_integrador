@@ -2,41 +2,42 @@ package com.cursospringboot.tp_integrador.controller;
 
 import com.cursospringboot.tp_integrador.dto.ProductoDTO;
 import com.cursospringboot.tp_integrador.service.IProductoService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/productos")
 public class ProductoController {
 
-    @Autowired
-    private IProductoService productoService;
+    private final IProductoService productoService;
 
-    @GetMapping("/productos")
+    @GetMapping
     public List<ProductoDTO> getProductos() {
         return productoService.getProductos();
     }
 
-    @GetMapping("/productos/{codigoProducto}")
-    public ProductoDTO getProducto(@PathVariable Long codigoProducto) {
-        return productoService.findProducto(codigoProducto);
+    @GetMapping("/{id}")
+    public ProductoDTO getProducto(@PathVariable Long id) {
+        return productoService.findProducto(id);
     }
 
-    @PostMapping("/productos/crear")
+    @PostMapping
     public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO) {
         return productoService.saveProducto(productoDTO);
     }
 
-    @PutMapping("/productos/editar/{codigoProducto}")
-    public ProductoDTO editProducto(@PathVariable Long codigoProducto,
+    @PutMapping("/{id}")
+    public ProductoDTO editProducto(@PathVariable Long id,
                                   @RequestBody ProductoDTO productoDTO) {
 
-        return productoService.updateProducto(codigoProducto, productoDTO);
+        return productoService.updateProducto(id, productoDTO);
     }
 
-    @DeleteMapping("/productos/eliminar/{codigoProducto}")
-    public void deleteProducto(@PathVariable Long codigoProducto) {
-        productoService.deleteProducto(codigoProducto);
+    @DeleteMapping("/{id}")
+    public void deleteProducto(@PathVariable Long id) {
+        productoService.deleteProducto(id);
     }
 }

@@ -5,17 +5,17 @@ import com.cursospringboot.tp_integrador.exception.NotFoundException;
 import com.cursospringboot.tp_integrador.mapper.Mapper;
 import com.cursospringboot.tp_integrador.model.Cliente;
 import com.cursospringboot.tp_integrador.repository.IClienteRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ClienteService implements IClienteService{
 
-    @Autowired
-    private IClienteRepository clienteRepository;
+    private final IClienteRepository clienteRepository;
 
     @Override
     public List<ClienteDTO> getClientes() {
@@ -34,7 +34,7 @@ public class ClienteService implements IClienteService{
     public ClienteDTO saveCliente(ClienteDTO clienteDTO) {
         Cliente cliente = new Cliente();
 
-        cliente.setIdCliente(clienteDTO.getIdCliente());
+        cliente.setId(clienteDTO.getId());
         cliente.setNombre(clienteDTO.getNombre());
         cliente.setApellido(clienteDTO.getApellido());
         cliente.setDni(clienteDTO.getDni());
@@ -45,16 +45,16 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
-    public ClienteDTO findCliente(Long idCliente) {
-        Cliente cliente = clienteRepository.findById(idCliente)
+    public ClienteDTO findCliente(Long id) {
+        Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("No se ha encontrado el cliente."));
 
         return Mapper.toClienteDTO(cliente);
     }
 
     @Override
-    public ClienteDTO updateCliente(Long idCliente, ClienteDTO clienteDTO) {
-        Cliente cliente = clienteRepository.findById(idCliente)
+    public ClienteDTO updateCliente(Long id, ClienteDTO clienteDTO) {
+        Cliente cliente = clienteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("No se encontro el cliente."));
 
         cliente.setNombre(clienteDTO.getNombre());
@@ -67,10 +67,10 @@ public class ClienteService implements IClienteService{
     }
 
     @Override
-    public void deleteCliente(Long idCliente) {
-        clienteRepository.findById(idCliente)
+    public void deleteCliente(Long id) {
+        clienteRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("No se encontro el cliente."));
 
-        clienteRepository.deleteById(idCliente);
+        clienteRepository.deleteById(id);
     }
 }

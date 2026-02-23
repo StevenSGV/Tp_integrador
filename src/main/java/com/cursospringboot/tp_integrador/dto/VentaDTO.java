@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 public class VentaDTO {
 
-    private Long codigoVenta;
+    private Long id;
     private LocalDate fecha;
     private String estadoVenta;
 

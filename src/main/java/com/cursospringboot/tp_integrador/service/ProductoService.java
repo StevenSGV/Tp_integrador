@@ -5,17 +5,17 @@ import com.cursospringboot.tp_integrador.exception.NotFoundException;
 import com.cursospringboot.tp_integrador.mapper.Mapper;
 import com.cursospringboot.tp_integrador.model.Producto;
 import com.cursospringboot.tp_integrador.repository.IProductoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ProductoService implements IProductoService{
 
-    @Autowired
-    private IProductoRepository productoRepository;
+    private final IProductoRepository productoRepository;
 
     @Override
     public List<ProductoDTO> getProductos() {
@@ -45,16 +45,16 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public ProductoDTO findProducto(Long codigoProducto) {
-        Producto producto = productoRepository.findById(codigoProducto)
+    public ProductoDTO findProducto(Long id) {
+        Producto producto = productoRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Producto no encontrado"));
 
         return Mapper.toProductoDTO(producto);
     }
 
     @Override
-    public ProductoDTO updateProducto(Long codigoProducto, ProductoDTO productoDTO) {
-        Producto producto = productoRepository.findById(codigoProducto)
+    public ProductoDTO updateProducto(Long id, ProductoDTO productoDTO) {
+        Producto producto = productoRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Producto no encontrado"));
 
         producto.setNombre(productoDTO.getNombre());
@@ -68,10 +68,10 @@ public class ProductoService implements IProductoService{
     }
 
     @Override
-    public void deleteProducto(Long codigoProducto) {
-        productoRepository.findById(codigoProducto)
+    public void deleteProducto(Long id) {
+        productoRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Producto no encontrado"));
 
-        productoRepository.deleteById(codigoProducto);
+        productoRepository.deleteById(id);
     }
 }
