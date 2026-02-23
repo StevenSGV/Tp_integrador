@@ -12,6 +12,7 @@ import com.cursospringboot.tp_integrador.repository.IProductoRepository;
 import com.cursospringboot.tp_integrador.repository.IVentaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,12 +22,11 @@ import java.util.List;
 public class VentaService implements IVentaService{
 
     private final IVentaRepository ventaRepository;
-
     private final IClienteRepository clienteRepository;
-
     private final IProductoRepository productoRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<VentaDTO> getVentas() {
         List<Venta> listaVentas = ventaRepository.findAll();
         List<VentaDTO> listaVentasDTO = new ArrayList<>();
@@ -40,6 +40,7 @@ public class VentaService implements IVentaService{
     }
 
     @Override
+    @Transactional
     public VentaDTO saveVenta(VentaDTO ventaDTO) {
         if(ventaDTO == null) throw new RuntimeException("La venta no puede ser nula");
         if(ventaDTO.getIdCliente() == null) throw new RuntimeException("El cliente no existe");
@@ -66,6 +67,7 @@ public class VentaService implements IVentaService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public VentaDTO findVenta(Long id) {
         Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venta no encontrada"));
@@ -74,6 +76,7 @@ public class VentaService implements IVentaService{
     }
 
     @Override
+    @Transactional
     public VentaDTO updateVenta(Long id, VentaDTO ventaDTO) {
         Venta venta = ventaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Venta no encontrada"));

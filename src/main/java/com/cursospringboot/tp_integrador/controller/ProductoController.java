@@ -2,6 +2,7 @@ package com.cursospringboot.tp_integrador.controller;
 
 import com.cursospringboot.tp_integrador.dto.ProductoDTO;
 import com.cursospringboot.tp_integrador.service.IProductoService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/productos")
+@RequestMapping("/api/productos")
 public class ProductoController {
 
     private final IProductoService productoService;
@@ -25,13 +26,13 @@ public class ProductoController {
     }
 
     @PostMapping
-    public ProductoDTO createProducto(@RequestBody ProductoDTO productoDTO) {
+    public ProductoDTO createProducto(@Valid @RequestBody ProductoDTO productoDTO) {
         return productoService.saveProducto(productoDTO);
     }
 
     @PutMapping("/{id}")
     public ProductoDTO editProducto(@PathVariable Long id,
-                                  @RequestBody ProductoDTO productoDTO) {
+                                  @Valid @RequestBody ProductoDTO productoDTO) {
 
         return productoService.updateProducto(id, productoDTO);
     }

@@ -2,6 +2,7 @@ package com.cursospringboot.tp_integrador.controller;
 
 import com.cursospringboot.tp_integrador.dto.ClienteDTO;
 import com.cursospringboot.tp_integrador.service.IClienteService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/clientes")
+@RequestMapping("/api/clientes")
 public class ClienteController {
 
     private final IClienteService clienteService;
@@ -25,12 +26,12 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ClienteDTO createCliente(@RequestBody ClienteDTO clienteDTO) {
+    public ClienteDTO createCliente(@Valid @RequestBody ClienteDTO clienteDTO) {
         return clienteService.saveCliente(clienteDTO);
     }
 
     @PutMapping("/{idCliente}")
-    public ClienteDTO editCliente(@PathVariable Long idCliente,
+    public ClienteDTO editCliente(@Valid @PathVariable Long idCliente,
                                   @RequestBody ClienteDTO clienteDTO) {
 
         return clienteService.updateCliente(idCliente, clienteDTO);
